@@ -8,7 +8,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 
-import com.heneng.launcher.bean.AppModel;
+import com.heneng.launcher.ui.activity.application.MyApplication;
+import com.heneng.launcher.bean.AppInfoBean;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,7 +34,7 @@ public class AppDataManage {
             initappPackageFilter();
         }
         for(String p : appPackageFilter){
-            if(packageName.startsWith(p)){
+            if(packageName.startsWith(p) && !packageName.equals(MyApplication.getInstance().getPackageName())){
                 return true;
             }
         }
@@ -45,12 +46,12 @@ public class AppDataManage {
         initappPackageFilter();
     }
 
-    public ArrayList<AppModel> getLaunchAppList() {
+    public ArrayList<AppInfoBean> getLaunchAppList() {
         PackageManager localPackageManager = mContext.getPackageManager();
         Intent localIntent = new Intent("android.intent.action.MAIN");
         localIntent.addCategory("android.intent.category.LAUNCHER");
         List<ResolveInfo> localList = localPackageManager.queryIntentActivities(localIntent, 0);
-        ArrayList<AppModel> localArrayList = null;
+        ArrayList<AppInfoBean> localArrayList = null;
         Iterator<ResolveInfo> localIterator = null;
         localArrayList = new ArrayList<>();
         if (localList.size() != 0) {
@@ -60,7 +61,7 @@ public class AppDataManage {
             if (!localIterator.hasNext())
                 break;
             ResolveInfo localResolveInfo = (ResolveInfo) localIterator.next();
-            AppModel localAppBean = new AppModel();
+            AppInfoBean localAppBean = new AppInfoBean();
             localAppBean.setIcon(localResolveInfo.activityInfo.loadIcon(localPackageManager));
             localAppBean.setTitle(localResolveInfo.activityInfo.loadLabel(localPackageManager).toString());
             localAppBean.setPackageName(localResolveInfo.activityInfo.packageName);
@@ -83,12 +84,12 @@ public class AppDataManage {
         return localArrayList;
     }
 
-    public ArrayList<AppModel> getUninstallAppList() {
+    public ArrayList<AppInfoBean> getUninstallAppList() {
         PackageManager localPackageManager = mContext.getPackageManager();
         Intent localIntent = new Intent("android.intent.action.MAIN");
         localIntent.addCategory("android.intent.category.LAUNCHER");
         List<ResolveInfo> localList = localPackageManager.queryIntentActivities(localIntent, 0);
-        ArrayList<AppModel> localArrayList = null;
+        ArrayList<AppInfoBean> localArrayList = null;
         Iterator<ResolveInfo> localIterator = null;
         if (localList != null) {
             localArrayList = new ArrayList<>();
@@ -98,7 +99,7 @@ public class AppDataManage {
             if (!localIterator.hasNext())
                 break;
             ResolveInfo localResolveInfo = (ResolveInfo) localIterator.next();
-            AppModel localAppBean = new AppModel();
+            AppInfoBean localAppBean = new AppInfoBean();
             localAppBean.setIcon(localResolveInfo.activityInfo.loadIcon(localPackageManager));
             localAppBean.setTitle(localResolveInfo.activityInfo.loadLabel(localPackageManager).toString());
             localAppBean.setPackageName(localResolveInfo.activityInfo.packageName);
@@ -121,12 +122,12 @@ public class AppDataManage {
         return localArrayList;
     }
 
-    public ArrayList<AppModel> getAutoRunAppList() {
+    public ArrayList<AppInfoBean> getAutoRunAppList() {
         PackageManager localPackageManager = mContext.getPackageManager();
         Intent localIntent = new Intent("android.intent.action.MAIN");
         localIntent.addCategory("android.intent.category.LAUNCHER");
         List<ResolveInfo> localList = localPackageManager.queryIntentActivities(localIntent, 0);
-        ArrayList<AppModel> localArrayList = null;
+        ArrayList<AppInfoBean> localArrayList = null;
         Iterator<ResolveInfo> localIterator = null;
         if (localList != null) {
             localArrayList = new ArrayList<>();
@@ -137,7 +138,7 @@ public class AppDataManage {
             if (!localIterator.hasNext())
                 break;
             ResolveInfo localResolveInfo = localIterator.next();
-            AppModel localAppBean = new AppModel();
+            AppInfoBean localAppBean = new AppInfoBean();
             localAppBean.setIcon(localResolveInfo.activityInfo.loadIcon(localPackageManager));
             localAppBean.setTitle(localResolveInfo.activityInfo.loadLabel(localPackageManager).toString());
             localAppBean.setPackageName(localResolveInfo.activityInfo.packageName);

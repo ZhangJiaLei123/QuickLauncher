@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">猫桌面</string>
+    <string name="app_name">和启动器</string>
     <string name="app_header_photo_name">照片</string>
     <string name="app_header_video_name">直播</string>
     <string name="app_header_app_name">应用</string>
     <string name="app_header_function_name">功能</string>
+
+    <string name="scanning" translatable="false">扫描中…</string>
+    <string name="cleaned">清理</string>
+    <string name="scanning_m_of_n" translatable="false">扫描中 %1$d/%2$d</string>
+
 </resources>
