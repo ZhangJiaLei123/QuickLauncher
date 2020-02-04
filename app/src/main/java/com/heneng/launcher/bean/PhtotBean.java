@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 
-import com.heneng.launcher.activity.MainActivity;
+import com.heneng.launcher.ui.activity.MainActivity;
 
 import java.io.File;
 import java.io.FileInputStream;

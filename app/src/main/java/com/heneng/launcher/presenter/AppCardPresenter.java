@@ -10,7 +10,7 @@ import androidx.leanback.widget.ImageCardView;
 import androidx.leanback.widget.Presenter;
 
 import com.heneng.launcher.R;
-import com.heneng.launcher.bean.AppModel;
+import com.heneng.launcher.bean.AppInfoBean;
 
 /**
  * ImageCard Presenter
@@ -50,7 +50,7 @@ public class AppCardPresenter extends Presenter {
     public void onBindViewHolder(ViewHolder viewHolder, Object item) {
         ImageCardView cardView = (ImageCardView) viewHolder.view;
         cardView.setMainImageDimensions(CARD_WIDTH,CARD_HEIGHT);
-        AppModel appBean = (AppModel) item;
+        AppInfoBean appBean = (AppInfoBean) item;
         cardView.setMainImageScaleType(ImageView.ScaleType.CENTER_INSIDE);
         cardView.getMainImageView().setImageDrawable(appBean.getImage());
         cardView.setTitleText(appBean.getTitle());
