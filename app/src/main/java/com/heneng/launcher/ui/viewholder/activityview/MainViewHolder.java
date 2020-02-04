@@ -56,7 +56,6 @@ public class MainViewHolder extends AbstractViewHolder {
     private Activity activity = null;
     TipToast tipToast = TipToast.getInstance();
 
-
     protected BrowseFragment mBrowseFragment;
     private ArrayObjectAdapter rowsAdapter;
     private BackgroundManager mBackgroundManager;
@@ -89,6 +88,11 @@ public class MainViewHolder extends AbstractViewHolder {
         addListener();
     }
 
+    /**
+     * UI更新
+     * @param o
+     * @return
+     */
     @Override
     public boolean upData(Object o) {
         if(o instanceof Message){
@@ -106,6 +110,9 @@ public class MainViewHolder extends AbstractViewHolder {
         return false;
     }
 
+    /**
+     * 组件监听
+     */
     public void addListener(){
         //菜单的点击事件
         naviView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -151,6 +158,9 @@ public class MainViewHolder extends AbstractViewHolder {
         activity.getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
     }
 
+    /**
+     * 构建RowsAdapter
+     */
     private void buildRowsAdapter() {
         rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
 
@@ -217,6 +227,9 @@ public class MainViewHolder extends AbstractViewHolder {
         mBrowseFragment.setSelectedPosition(0);
     }
 
+    /**
+     * 添加照片模块
+     */
     private void addPhotoRow() {
         String headerName = getContext().getResources().getString(R.string.app_header_photo_name);
         ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(new PhotoPresenter());
@@ -228,6 +241,9 @@ public class MainViewHolder extends AbstractViewHolder {
         rowsAdapter.add(new ListRow(header, listRowAdapter));
     }
 
+    /**
+     * 添加视屏模块
+     */
     private void addVideoRow() {
         String headerName = getContext().getResources().getString(R.string.app_header_video_name);
         ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(new ImgCardPresenter());
@@ -238,6 +254,9 @@ public class MainViewHolder extends AbstractViewHolder {
         rowsAdapter.add(new ListRow(header, listRowAdapter));
     }
 
+    /**
+     * 添加app模块
+     */
     private void addAppRow() {
         String headerName = getContext().getResources().getString(R.string.app_header_app_name);
         ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(new AppCardPresenter());
@@ -252,6 +271,9 @@ public class MainViewHolder extends AbstractViewHolder {
         rowsAdapter.add(new ListRow(header, listRowAdapter));
     }
 
+    /**
+     * 添加其他功能模块
+     */
     private void addOtherRow() {
         String headerName = getContext().getResources().getString(R.string.app_header_function_name);
         ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(new FunctionCardPresenter());
@@ -267,6 +289,7 @@ public class MainViewHolder extends AbstractViewHolder {
     /**
      * 更新背景图片
      * 需要提前设置背景图片
+     * 使用:MainActivity.handler.sendEmptyMessage(MSGID_APP_UP_BACKGROUND_IMAGE);更新
      * @see {ImageTools.copyToBackgroundImageFile( Context context, File newImageFile)}
      */
     private void upBackgroundImage(){
@@ -281,6 +304,7 @@ public class MainViewHolder extends AbstractViewHolder {
 
     /**
      * 更新纯色背景,需要在QAppConfig中 config.putInt("", color);
+     * 使用:MainActivity.handler.sendEmptyMessage(MSGID_APP_UP_BACKGROUND_COLOR);更新
      */
     private void upBackgroundColor(){
         QAppConfig config = QAppConfig.getInstance(getContext());
