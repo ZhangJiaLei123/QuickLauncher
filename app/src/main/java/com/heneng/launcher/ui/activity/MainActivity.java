@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
 
+import com.blxt.power.PowerReceiver;
+import com.blxt.power.PowerService;
 import com.blxt.quickactivity.QPermissionActivity;
 import com.blxt.quicklog.QLog;
+import com.blxt.slave.SlaveService;
 import com.heneng.launcher.R;
 import com.heneng.launcher.ui.activity.application.BaseActivity;
 import com.heneng.launcher.ui.viewholder.activityview.MainTimeViewHolder;
@@ -17,6 +20,8 @@ import com.heneng.launcher.ui.viewholder.activityview.MainViewHolder;
 import static com.heneng.launcher.model.MConstant.MSGID_APP_STARTACTIVITY;
 
 public class MainActivity extends BaseActivity {
+    final static String TAG = "MainActivity";
+
     public static final String  SD_PATH = Environment.getExternalStorageDirectory().getPath();
     
     public static Context mContext;
@@ -38,9 +43,13 @@ public class MainActivity extends BaseActivity {
      //  FAL_PERMISSIONS_CHAEK_NOTIFICATION = true;
      //  FAL_PERMISSIONS_CHAEK_SYSTEM = true;
      //  FAL_PERMISSIONS_CHAEK_APP_AUTO_RUN = true;
-       FAL_PERMISSIONS_CHAEK_ADMIN = true;
-
+        FAL_PERMISSIONS_CHAEK_ADMIN = true;
+        FAL_PERMISSIONS_CHAEK_SYSTEM = true;
         callBack = new MPermissionCallBack();
+
+        SlaveService.getInstances(this);
+
+        checkDevicePolicyManager(getBaseContext(), PowerReceiver.class);
 
         mContext = this;
     }
@@ -48,6 +57,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+
     }
 
     @Override
@@ -59,15 +70,6 @@ public class MainActivity extends BaseActivity {
                 QLog.d(this, "启动Activity" + cls);
                 final Intent intent = new Intent(this, cls);
                 startActivity(intent);
-
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        QLog.d(this, "启动Activity完成" );
-//                    }
-//                }).start();
-
                 break;
         }
     }
@@ -102,7 +104,7 @@ public class MainActivity extends BaseActivity {
         public void onDevicePolicyManager(boolean result) {
             QLog.i(TAG,4, "onDevicePolicyManager",  result);
             if(result){
-              //  PowerService.newInstance(getBaseContext());
+                PowerService.newInstance(getBaseContext());
             }
         }
     }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device-admin >
+
+    <uses-policies>
+        <!-- 强制锁定 -->
+        <force-lock />
+
+        <!-- 该文件中也可以配置其他信息 -->
+        <limit-password />
+        <watch-login />
+        <reset-password />
+        <wipe-data />
+        <expire-password />
+        <encrypted-storage />
+        <disable-camera />
+
+    </uses-policies>
+
+</device-admin>

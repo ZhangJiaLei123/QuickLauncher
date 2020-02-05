@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Message;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
@@ -138,6 +139,10 @@ public class MainViewHolder extends AbstractViewHolder {
                     case R.id.nav_up_app:// 检查更新
                         //@TODO 检查更新
                         tipToast.showToast("提示", "无版本更新");
+                        break;
+                    case R.id.nav_up_set: // 设置
+                        Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                        getContext().startActivity(intent);
                         break;
 
                     default:

@@ -23,7 +23,7 @@ public class AppDataManage {
 
     private static void initappPackageFilter(){
         appPackageFilter = new ArrayList<>();
-        appPackageFilter.add("com.android.settings");
+      //  appPackageFilter.add("com.android.settings");
         appPackageFilter.add("com.heneng");
       //  appPackageFilter.add("com.heneng.launcher");
     }
