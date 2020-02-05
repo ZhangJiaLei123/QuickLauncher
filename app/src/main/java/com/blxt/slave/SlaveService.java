@@ -15,6 +15,7 @@ import com.heneng.quicknoti.TipToast;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_CONNECT;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_ERROR;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_UP;
 
@@ -50,7 +51,11 @@ public class SlaveService extends Service {
                 slaveHelp.sendData(slaveModel);
                 break;
             case MSGID_SLAVE_DATA_ERROR: // 下位机连接异常,需要重连
+                slaveHelp.sendData(new byte[]{-2, 0, 0, 0, 0}); // 下位机异常
                 reStart();
+                break;
+            case MSGID_SLAVE_DATA_CONNECT:
+                slaveHelp.sendData(new byte[]{-1, 0, 0, 0, 0}); // 下位机连接断开
                 break;
         }
     }

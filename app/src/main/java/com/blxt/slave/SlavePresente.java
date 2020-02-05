@@ -12,6 +12,7 @@ import com.example.x6.serial.SerialHelper;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_CONNECT;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_ERROR;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_UP;
 
@@ -103,6 +104,7 @@ public class SlavePresente{
         // 关闭线程池
         if(timer != null)
             timer.cancel();
+        callback.sendEmptyMessage(MSGID_SLAVE_DATA_CONNECT);
         QLog.e(TAG, "下位机连接断开");
     }
 
