@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
 
+import com.blxt.finger.FingerHelp;
 import com.blxt.quicklog.QLog;
 import com.example.x6.serial.SerialPortFinder;
 import com.heneng.quicknoti.TipToast;
@@ -16,6 +17,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_CONNECT;
+import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_DISCONNECT;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_ERROR;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_UP;
 
@@ -32,6 +34,7 @@ public class SlaveService extends Service {
 
     SlavePresente slave = null;
     SlaveHelp slaveHelp = null;
+    FingerHelp fingerHelp = null;
 
     Timer timer = null; // 连接下位机的定时器
     TimerTask timerTask = null;
@@ -54,8 +57,13 @@ public class SlaveService extends Service {
                 slaveHelp.sendData(new byte[]{-2, 0, 0, 0, 0}); // 下位机异常
                 reStart();
                 break;
-            case MSGID_SLAVE_DATA_CONNECT:
-                slaveHelp.sendData(new byte[]{-1, 0, 0, 0, 0}); // 下位机连接断开
+            case MSGID_SLAVE_DATA_DISCONNECT: // 下位机连接断开
+                slaveHelp.sendData(new byte[]{-1, 0, 0, 0, 0});
+                break;
+            case MSGID_SLAVE_DATA_CONNECT: // 下位机连接成功
+                QLog.i(TAG, "发送广播", "下位机连接成功");
+                slaveHelp.sendData(new byte[]{1, 0, 0, 0, 0});
+               // fingerHelp.replyData(new byte[]{1, 0, 0, 0, 0});
                 break;
         }
     }
@@ -86,6 +94,7 @@ public class SlaveService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG,"下位机服务开始");
         slaveHelp = SlaveHelp.newInstance(getBaseContext());
+        fingerHelp = FingerHelp.newInstance(getBaseContext());
         // 启动
 
         slave = new SlavePresente(m_szDevice, m_nBaudrate);
@@ -170,6 +179,7 @@ public class SlaveService extends Service {
                         timerTask.cancel();
                         timerTask = null;
                     }
+                    mHandler.sendEmptyMessage(MSGID_SLAVE_DATA_CONNECT);
                     QLog.i(TAG, "下位机服务已启动,准备连接指纹设备");
                 }
 

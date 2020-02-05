@@ -12,7 +12,8 @@ public final class MConstant {
 
     public static final int MSGID_SLAVE_DATA_UP = 31;    // 下位机数据接收更新
     public static final int MSGID_SLAVE_DATA_ERROR = 32; // 下位机连接异常,需要重连
-    public static final int MSGID_SLAVE_DATA_CONNECT= 33; // 下位机连接断开
+    public static final int MSGID_SLAVE_DATA_CONNECT = 33; // 下位机连接成功
+    public static final int MSGID_SLAVE_DATA_DISCONNECT = 34; // 下位机连接断开
 
 
    public static final int MSGID_RUBLISHCLEAN_ONCLEAR = 110;

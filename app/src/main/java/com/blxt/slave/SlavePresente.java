@@ -12,7 +12,7 @@ import com.example.x6.serial.SerialHelper;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_CONNECT;
+import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_DISCONNECT;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_ERROR;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_UP;
 
@@ -28,7 +28,7 @@ public class SlavePresente{
 
     public Handler callback = null;         ///< 事件回调
 
-    byte liveCount = 0;                     ///< 心跳计数
+    byte liveCount = 80;                     ///< 心跳计数
     private Timer timer;                    ///< 心跳定时
     byte slaveModel[] = new byte[8];        ///< 下位机状态 心跳,门状态(1/2),门动作(0/1/2),锁状态(1/2),锁动作(0/1/2); 0无状态1开2关
     TimerTask taskUpData = new TimerTask() {
@@ -49,7 +49,7 @@ public class SlavePresente{
             }
 
             if(liveCount >= 0xFF){
-                liveCount = 0;
+                liveCount = 80;
             }
 
         }
@@ -104,7 +104,7 @@ public class SlavePresente{
         // 关闭线程池
         if(timer != null)
             timer.cancel();
-        callback.sendEmptyMessage(MSGID_SLAVE_DATA_CONNECT);
+        callback.sendEmptyMessage(MSGID_SLAVE_DATA_DISCONNECT);
         QLog.e(TAG, "下位机连接断开");
     }
 
