@@ -134,11 +134,26 @@
         </receiver>
 
         <receiver
-            android:name="com.blxt.slave.SlaveReplyReceiver"
+            android:name="com.blxt.slave.SlaveProviderReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.blxt.slave.broadcast.reply" />
+                <action android:name="com.blxt.slave.broadcast.provider" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.blxt.user.UserReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.blxt.launcher.user.broadcast" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.blxt.user.broadcast" />
             </intent-filter>
             <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

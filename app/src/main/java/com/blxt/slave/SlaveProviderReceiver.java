@@ -14,12 +14,12 @@ import static com.blxt.slave.SlaveHelp.MSG_SLAVE_REPLY_BROADCASTRECEIVER;
 /**
  * 下位机广播信息接收
  */
-public class SlaveReplyReceiver extends BroadcastReceiver {
-    final String TAG =  "SlaveReplyReceiver";
+public class SlaveProviderReceiver extends BroadcastReceiver {
+    final String TAG =  "SlaveProviderReceiver";
     @Override
     public void onReceive(Context context, Intent intent) {
         if(context == null || intent == null){
-            Log.d("SlaveReplyReceiver", "参数异常");
+            Log.d("SlaveProviderReceiver", "参数异常");
             return;
         }
 
@@ -37,6 +37,7 @@ public class SlaveReplyReceiver extends BroadcastReceiver {
             }
 
         }
+
 
     }
 }

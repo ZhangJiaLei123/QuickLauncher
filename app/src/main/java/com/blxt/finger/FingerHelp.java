@@ -13,7 +13,7 @@ public class FingerHelp {
     /** 指纹组件接收广播名 */
     public static final String MSG_FINGER_BROADCASTRECEIVER = "com.blxt.finger.broadcast";
     /** 指纹组件接收广播名 */
-    public static final String MSG_FINGER_BROADCASTRECEIVER_REPLY = "com.blxt.finger.broadcast.reply";
+    public static final String MSG_FINGER_BROADCASTRECEIVER_PROVIDER = "com.blxt.finger.broadcast.provider";
     public static final String MSG_FINGER_KEY_DO = "finger.data";
 
     /** 意图Key */
@@ -134,11 +134,11 @@ public class FingerHelp {
      * 回复数据
      * @param data
      */
-    public synchronized static void replyData(byte data[]){
+    public synchronized static void sendProviderData(byte data[]){
         if(context == null){
             throw new NullPointerException("没有初始化");
         }
-        Intent intent=new Intent(MSG_FINGER_BROADCASTRECEIVER_REPLY);
+        Intent intent=new Intent(MSG_FINGER_BROADCASTRECEIVER_PROVIDER);
         intent.putExtra(MSG_FINGER_KEY_DO, data);
         context.sendBroadcast(intent);
     }

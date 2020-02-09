@@ -83,10 +83,14 @@ public class MainViewHolder extends AbstractViewHolder {
             upBackgroundImage();
         }
 
+
         prepareBackgroundManager();
-        buildRowsAdapter();
 
         addListener();
+    }
+
+    public void onResume() {
+        buildRowsAdapter();
     }
 
     /**

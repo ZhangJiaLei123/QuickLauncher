@@ -36,7 +36,7 @@ public class SlavePresente{
         public void run() {
             liveCount++;
             if(liveCount % 2 == 0){
-                Log.i(TAG,"发送心跳包");
+                //Log.i(TAG,"发送心跳包");
                 live();
                 returnState(slaveModel);
             }

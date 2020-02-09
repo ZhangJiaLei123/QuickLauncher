@@ -3,6 +3,8 @@ package com.heneng.launcher.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
@@ -52,12 +54,28 @@ public class MainActivity extends BaseActivity {
         checkDevicePolicyManager(getBaseContext(), PowerReceiver.class);
 
         mContext = this;
+
+        Uri uri = Uri.parse("content://com.blxt.usermanage/query"); //路径和你定义的路径一样
+
+        Cursor cursor1 = getContentResolver().query(uri, null, null,
+                null, null
+        );
+
+        if (cursor1 != null && cursor1.getCount() > 0) {
+            while (cursor1.moveToNext()) {
+                String name = cursor1.getString(1);
+                String phone = cursor1.getString(2);
+                System.out.println("第二个应用:name==>" + name + "   phone==>" + phone);
+            }
+
+        }
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        mainViewHolder.onResume();
 
     }
 

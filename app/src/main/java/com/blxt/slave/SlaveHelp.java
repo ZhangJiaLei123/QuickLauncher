@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 public class SlaveHelp {
     /** 广播名 */
     public static final String MSG_SLAVE_BROADCASTRECEIVER = "com.blxt.slave.broadcast";
-    public static final String MSG_SLAVE_REPLY_BROADCASTRECEIVER = "com.blxt.slave.broadcast.reply";
+    public static final String MSG_SLAVE_REPLY_BROADCASTRECEIVER = "com.blxt.slave.broadcast.provider";
 
     /** 意图-key*/
     public static final String MSG_SLAVE_INTENT_KEY_DO = "slave.data";

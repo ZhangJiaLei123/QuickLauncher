@@ -25,6 +25,7 @@ public class AppDataManage {
         appPackageFilter = new ArrayList<>();
       //  appPackageFilter.add("com.android.settings");
         appPackageFilter.add("com.heneng");
+        appPackageFilter.add("com.blxt");
       //  appPackageFilter.add("com.heneng.launcher");
     }
 

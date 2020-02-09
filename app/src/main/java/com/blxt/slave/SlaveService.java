@@ -10,12 +10,14 @@ import android.util.Log;
 
 import com.blxt.finger.FingerHelp;
 import com.blxt.quicklog.QLog;
+import com.blxt.user.UserHelper;
 import com.example.x6.serial.SerialPortFinder;
 import com.heneng.quicknoti.TipToast;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.blxt.user.UserReceiver.USERRECEIVER_NAME;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_CONNECT;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_DISCONNECT;
 import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_DATA_ERROR;
@@ -35,6 +37,7 @@ public class SlaveService extends Service {
     SlavePresente slave = null;
     SlaveHelp slaveHelp = null;
     FingerHelp fingerHelp = null;
+    UserHelper userHelper = null;
 
     Timer timer = null; // 连接下位机的定时器
     TimerTask timerTask = null;
@@ -52,6 +55,7 @@ public class SlaveService extends Service {
             case MSGID_SLAVE_DATA_UP: // 处理下位机数据
                 byte slaveModel[] = (byte[])message.obj;
                 slaveHelp.sendData(slaveModel);
+                userHelper.getUserInfo( USERRECEIVER_NAME);
                 break;
             case MSGID_SLAVE_DATA_ERROR: // 下位机连接异常,需要重连
                 slaveHelp.sendData(new byte[]{-2, 0, 0, 0, 0}); // 下位机异常
@@ -63,7 +67,7 @@ public class SlaveService extends Service {
             case MSGID_SLAVE_DATA_CONNECT: // 下位机连接成功
                 QLog.i(TAG, "发送广播", "下位机连接成功");
                 slaveHelp.sendData(new byte[]{1, 0, 0, 0, 0});
-               // fingerHelp.replyData(new byte[]{1, 0, 0, 0, 0});
+               // fingerHelp.sendProviderData(new byte[]{1, 0, 0, 0, 0});
                 break;
         }
     }
@@ -95,6 +99,7 @@ public class SlaveService extends Service {
         Log.i(TAG,"下位机服务开始");
         slaveHelp = SlaveHelp.newInstance(getBaseContext());
         fingerHelp = FingerHelp.newInstance(getBaseContext());
+        userHelper = UserHelper.newInstance(getBaseContext());
         // 启动
 
         slave = new SlavePresente(m_szDevice, m_nBaudrate);
