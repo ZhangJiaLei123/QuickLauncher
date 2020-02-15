@@ -26,21 +26,9 @@ public class MainTimeViewHolder extends AbstractViewHolder {
         shiZhong2.getViewHolder().getTvDate().setTextSize(32);
     }
 
-
     @Override
-    public boolean upData(Object o) {
+    public void onResume() {
 
-        switch (timeBoardIndex){
-            case 0:
-                shiZhong.setVisibility(View.VISIBLE);
-                shiZhong2.setVisibility(View.GONE);
-                break;
-            case 1:
-                shiZhong.setVisibility(View.GONE);
-                shiZhong2.setVisibility(View.VISIBLE);
-                break;
-        }
-        return false;
     }
 
     public int getTimeBoardIndex() {
@@ -50,4 +38,5 @@ public class MainTimeViewHolder extends AbstractViewHolder {
     public void setTimeBoardIndex(int timeBoardIndex) {
         this.timeBoardIndex = timeBoardIndex;
     }
+
 }

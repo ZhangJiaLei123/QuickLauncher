@@ -78,14 +78,13 @@ public class RublishcleanViewHolder extends AbstractViewHolder {
 
     }
 
-    public void setHintT(String message) {
-        rubbish_capacity.setText(message);
+    @Override
+    public void onResume() {
+
     }
 
-
-    @Override
-    public boolean upData(Object o) {
-        return false;
+    public void setHintT(String message) {
+        rubbish_capacity.setText(message);
     }
 
     public void onScanStarted(Context context) {

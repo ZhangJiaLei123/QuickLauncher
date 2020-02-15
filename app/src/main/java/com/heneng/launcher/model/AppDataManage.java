@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 
-import com.heneng.launcher.ui.activity.application.MyApplication;
+import com.heneng.launcher.ui.activity.application.AppApplication;
 import com.heneng.launcher.bean.AppInfoBean;
 
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class AppDataManage {
             initappPackageFilter();
         }
         for(String p : appPackageFilter){
-            if(packageName.startsWith(p) && !packageName.equals(MyApplication.getInstance().getPackageName())){
+            if(packageName.startsWith(p) && !packageName.equals(AppApplication.getInstances().getPackageName())){
                 return true;
             }
         }

@@ -7,11 +7,12 @@ import android.util.Log;
 
 import com.blxt.power.PowerHelp;
 import com.blxt.quicklog.QLog;
+import com.blxt.user.bean.UserHelper;
 
-import static com.blxt.user.UserHelper.MODEL_LOGIN;
-import static com.blxt.user.UserHelper.MSG_USER_BROADCASTRECEIVER;
-import static com.blxt.user.UserHelper.MSG_USER_KEY_USER_ACTION;
-import static com.blxt.user.UserHelper.MSG_USER_KEY_USER_INFO;
+import static com.blxt.user.bean.UserHelper.MODEL_LOGIN;
+import static com.blxt.user.bean.UserHelper.MSG_USER_BROADCASTRECEIVER;
+import static com.blxt.user.bean.UserHelper.MSG_USER_KEY_USER_ACTION;
+import static com.blxt.user.bean.UserHelper.MSG_USER_KEY_USER_INFO;
 
 
 /**
@@ -41,9 +42,12 @@ public class UserReceiver extends BroadcastReceiver {
                 QLog.i(TAG,  "操作:" + _id,"用户信息", str);
             }
             else {
-                QLog.e(TAG, "空用户信息", _id + "");
-                // 进入登陆
-                userHelper.openUserActivity(USERRECEIVER_NAME, MODEL_LOGIN);
+                if(_id < 10){
+                    QLog.e(TAG, "空用户信息", _id + "");
+
+                    // 进入登陆
+                    // userHelper.openUserActivity(USERRECEIVER_NAME, MODEL_LOGIN);
+                }
             }
 
             PowerHelp.newInstance(context);

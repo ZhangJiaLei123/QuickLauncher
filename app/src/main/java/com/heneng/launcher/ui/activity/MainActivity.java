@@ -13,7 +13,6 @@ import com.blxt.power.PowerReceiver;
 import com.blxt.power.PowerService;
 import com.blxt.quickactivity.QPermissionActivity;
 import com.blxt.quicklog.QLog;
-import com.blxt.slave.SlaveService;
 import com.heneng.launcher.R;
 import com.heneng.launcher.ui.activity.application.BaseActivity;
 import com.heneng.launcher.ui.viewholder.activityview.MainTimeViewHolder;
@@ -49,8 +48,6 @@ public class MainActivity extends BaseActivity {
         FAL_PERMISSIONS_CHAEK_SYSTEM = true;
         callBack = new MPermissionCallBack();
 
-        SlaveService.getInstances(this);
-
         checkDevicePolicyManager(getBaseContext(), PowerReceiver.class);
 
         mContext = this;
@@ -82,6 +79,8 @@ public class MainActivity extends BaseActivity {
     @Override
     public void doMessage( Message message) {
 
+        mainViewHolder.doMessage(message);
+
         switch (message.what){
             case MSGID_APP_STARTACTIVITY: // 启动Activity
                 Class<?> cls = (Class)message.obj;
@@ -91,7 +90,6 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
-
 
     /**
      * 权限检查结果回调

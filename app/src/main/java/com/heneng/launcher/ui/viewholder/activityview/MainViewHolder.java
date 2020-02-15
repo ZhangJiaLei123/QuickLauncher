@@ -1,7 +1,7 @@
 package com.heneng.launcher.ui.viewholder.activityview;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.leanback.app.BackgroundManager;
 import androidx.leanback.app.BrowseFragment;
@@ -43,17 +44,17 @@ import com.heneng.launcher.presenter.FunctionCardPresenter;
 import com.heneng.launcher.presenter.ImgCardPresenter;
 import com.heneng.launcher.presenter.PhotoPresenter;
 import com.blxt.safety.activity.RublishcleanActivity;
+import com.heneng.launcher.ui.activity.application.AppApplication;
 import com.heneng.launcher.util.ImageTools;
 import com.heneng.quicknoti.TipToast;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.heneng.launcher.model.MConstant.MSGID_APP_STARTACTIVITY;
+import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_PORT_UP;
 
 public class MainViewHolder extends AbstractViewHolder {
-
     private Activity activity = null;
     TipToast tipToast = TipToast.getInstance();
 
@@ -65,7 +66,8 @@ public class MainViewHolder extends AbstractViewHolder {
     private NavigationView naviView;
     private DrawerLayout mDrawer = null;
 
-    public MainViewHolder(@NonNull View view, Activity activity ) {
+
+    public MainViewHolder(@NonNull View view, Activity activity) {
         super(view);
         this.activity = activity;
 
@@ -76,10 +78,9 @@ public class MainViewHolder extends AbstractViewHolder {
         mDrawer = view.findViewById(R.id.drawer_layout);
 
         QAppConfig config = QAppConfig.getInstance(getContext());
-        if(config.getBoolean("纯色背景", true)){
+        if (config.getBoolean("纯色背景", true)) {
             upBackgroundColor();
-        }
-        else{
+        } else {
             upBackgroundImage();
         }
 
@@ -93,48 +94,45 @@ public class MainViewHolder extends AbstractViewHolder {
         buildRowsAdapter();
     }
 
+
     /**
-     * UI更新
-     * @param o
+     * UI事件
+     * @param message
      * @return
      */
-    @Override
-    public boolean upData(Object o) {
-        if(o instanceof Message){
-            Message message = (Message)o;
-            switch (message.what){
-                case MConstant.MSGID_APP_UP_BACKGROUND_IMAGE: // 更新背景图片
-                    upBackgroundImage();
-                    break;
-                case MConstant.MSGID_APP_UP_BACKGROUND_COLOR: // 更新背景(纯色背景)
-                    upBackgroundColor();
-                    break;
-            }
+    public boolean doMessage(Message message){
+        switch (message.what) {
+            case MConstant.MSGID_APP_UP_BACKGROUND_IMAGE: // 更新背景图片
+                upBackgroundImage();
+                break;
+            case MConstant.MSGID_APP_UP_BACKGROUND_COLOR: // 更新背景(纯色背景)
+                upBackgroundColor();
+                break;
+            case MSGID_SLAVE_PORT_UP: // 更新下位机端口
+                tipToast.showToast("提示", "设备选择成功,重启后生效");
+                break;
         }
-
         return false;
     }
 
     /**
-     * 组件监听
+     * 组件监听 & 菜单监听
      */
-    public void addListener(){
+    public void addListener() {
         //菜单的点击事件
         naviView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                int index = 0;
                 //进行判断
                 switch (menuItem.getItemId()) {
                     case R.id.nav_clear:// 清理垃圾
                         //@TODO 清理垃圾
-                       // tipToast.showToast("提示", "清理垃圾完成");
+                        // tipToast.showToast("提示", "清理垃圾完成");
                         Message message = new Message();
                         message.what = MSGID_APP_STARTACTIVITY;
                         message.obj = RublishcleanActivity.class;
                         callbck.sendMessage(message);
-
                         break;
                     case R.id.nav_background:// 设置壁纸
                         //@TODO 设置壁纸
@@ -153,13 +151,15 @@ public class MainViewHolder extends AbstractViewHolder {
                         break;
                 }
 
-
                 mDrawer.closeDrawers();
                 return false;
             }
         });
     }
 
+    /**
+     * 处理背景容器
+     */
     private void prepareBackgroundManager() {
         mBackgroundManager = BackgroundManager.getInstance(activity);
         mBackgroundManager.attach(activity.getWindow());
@@ -299,14 +299,14 @@ public class MainViewHolder extends AbstractViewHolder {
      * 更新背景图片
      * 需要提前设置背景图片
      * 使用:MainActivity.handler.sendEmptyMessage(MSGID_APP_UP_BACKGROUND_IMAGE);更新
+     *
      * @see {ImageTools.copyToBackgroundImageFile( Context context, File newImageFile)}
      */
-    private void upBackgroundImage(){
+    private void upBackgroundImage() {
         BitmapDrawable drawable = ImageTools.getBackgroundImage(getContext());
-        if(drawable != null){
+        if (drawable != null) {
             mDrawer.setBackground(drawable);
-        }
-        else{
+        } else {
             tipToast.showToast("提示", "背景图片不存在");
         }
     }
@@ -315,10 +315,12 @@ public class MainViewHolder extends AbstractViewHolder {
      * 更新纯色背景,需要在QAppConfig中 config.putInt("", color);
      * 使用:MainActivity.handler.sendEmptyMessage(MSGID_APP_UP_BACKGROUND_COLOR);更新
      */
-    private void upBackgroundColor(){
+    private void upBackgroundColor() {
         QAppConfig config = QAppConfig.getInstance(getContext());
         int color = config.getInt("背景颜色", 0xFFDDDDDD);
 
         mDrawer.setBackgroundColor(color);
     }
+
+
 }
