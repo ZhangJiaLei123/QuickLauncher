@@ -110,7 +110,6 @@
         <service android:name="com.blxt.safety.service.CleanerService" />
 
         <service android:name="com.blxt.power.PowerService"/>
-        <service android:name="com.blxt.slave.SlaveService"/>
 
         <receiver
             android:name="com.blxt.power.PowerReceiver"
@@ -131,18 +130,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-        </receiver>
-
-        <receiver
-            android:name="com.blxt.slave.SlaveProviderReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.blxt.slave.broadcast.provider" />
-            </intent-filter>
-            <intent-filter android:priority="1000">
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
         </receiver>
 
         <receiver
