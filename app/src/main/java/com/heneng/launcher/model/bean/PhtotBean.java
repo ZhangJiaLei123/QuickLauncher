@@ -1,11 +1,11 @@
-package com.heneng.launcher.bean;
+package com.heneng.launcher.model.bean;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 
-import com.heneng.launcher.ui.activity.MainActivity;
+import com.heneng.launcher.view.activity.MainActivity;
 
 import java.io.File;
 import java.io.FileInputStream;

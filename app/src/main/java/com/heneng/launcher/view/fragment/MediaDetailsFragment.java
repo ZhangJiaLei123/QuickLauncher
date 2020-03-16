@@ -1,4 +1,4 @@
-package com.heneng.launcher.ui.fragment;
+package com.heneng.launcher.view.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,10 +26,10 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
-import com.heneng.launcher.ui.activity.MediaDetailsActivity;
+import com.heneng.launcher.view.activity.MediaDetailsActivity;
 import com.heneng.launcher.model.MediaModel;
 import com.heneng.launcher.presenter.MediaDetailsDescriptionPresenter;
-import com.heneng.launcher.ui.activity.VideoActivity;
+import com.heneng.launcher.view.activity.VideoActivity;
 
 import java.io.File;
 import java.io.FileInputStream;

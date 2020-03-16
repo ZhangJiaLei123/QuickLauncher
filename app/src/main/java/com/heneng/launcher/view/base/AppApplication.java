@@ -1,4 +1,4 @@
-package com.heneng.launcher.ui.activity.application;
+package com.heneng.launcher.view.base;
 
 import com.blxt.quickactivity.AbstractApplication;
 import com.blxt.quickactivity.QAppConfig;

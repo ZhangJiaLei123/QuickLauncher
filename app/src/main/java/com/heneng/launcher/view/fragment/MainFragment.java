@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.heneng.launcher.ui.fragment;
+package com.heneng.launcher.view.fragment;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -45,8 +45,8 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
 import com.heneng.launcher.R;
-import com.heneng.launcher.bean.AppInfoBean;
-import com.heneng.launcher.bean.PhtotBean;
+import com.heneng.launcher.model.bean.AppInfoBean;
+import com.heneng.launcher.model.bean.PhtotBean;
 import com.heneng.launcher.model.AppDataManage;
 import com.heneng.launcher.model.FunctionModel;
 import com.heneng.launcher.model.MediaModel;

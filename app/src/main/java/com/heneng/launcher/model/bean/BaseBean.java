@@ -1,4 +1,4 @@
-package com.heneng.launcher.bean;
+package com.heneng.launcher.model.bean;
 
 
 public class BaseBean {

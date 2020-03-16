@@ -10,7 +10,7 @@ import androidx.leanback.widget.ImageCardView;
 import androidx.leanback.widget.Presenter;
 
 import com.heneng.launcher.R;
-import com.heneng.launcher.bean.PhtotBean;
+import com.heneng.launcher.model.bean.PhtotBean;
 
 /**
  * Photo Presenter

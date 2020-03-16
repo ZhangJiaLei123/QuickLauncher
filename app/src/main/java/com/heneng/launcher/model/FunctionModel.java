@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.heneng.launcher.R;
-import com.heneng.launcher.ui.activity.AppUninstallActivity;
+import com.heneng.launcher.view.activity.AppUninstallActivity;
 
 import java.util.ArrayList;
 import java.util.List;

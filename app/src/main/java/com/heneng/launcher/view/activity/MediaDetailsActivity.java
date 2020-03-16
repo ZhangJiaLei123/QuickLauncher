@@ -1,9 +1,9 @@
-package com.heneng.launcher.ui.activity;
+package com.heneng.launcher.view.activity;
 
 import android.os.Bundle;
 
 import com.heneng.launcher.R;
-import com.heneng.launcher.ui.activity.application.BaseActivity;
+import com.heneng.launcher.view.base.BaseActivity;
 
 /**
  * @author jacky

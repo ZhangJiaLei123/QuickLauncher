@@ -1,4 +1,4 @@
-package com.heneng.launcher.ui.viewholder.activityview;
+package com.heneng.launcher.view.viewholder.activityview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,7 +18,7 @@ import com.blxt.view.ArcProgress;
 import com.heneng.launcher.R;
 import com.blxt.safety.bean.CacheListItem;
 import com.blxt.safety.bean.StorageSize;
-import com.heneng.launcher.ui.adapter.RublishMemoryAdapter;
+import com.heneng.launcher.view.adapter.RublishMemoryAdapter;
 import com.blxt.safety.util.StorageUtil;
 
 import java.util.ArrayList;

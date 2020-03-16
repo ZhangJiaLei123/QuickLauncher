@@ -24,7 +24,7 @@ import com.blxt.safety.bean.AppProcessInfo;
 import com.blxt.safety.bean.CacheListItem;
 import com.blxt.safety.bean.StorageSize;
 import com.blxt.safety.service.CleanerService;
-import com.heneng.launcher.ui.viewholder.activityview.RublishcleanViewHolder;
+import com.heneng.launcher.view.viewholder.activityview.RublishcleanViewHolder;
 import com.blxt.safety.util.AppUtil;
 import com.blxt.safety.util.StorageUtil;
 

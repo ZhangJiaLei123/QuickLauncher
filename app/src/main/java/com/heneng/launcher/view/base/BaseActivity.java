@@ -1,15 +1,14 @@
-package com.heneng.launcher.ui.activity.application;
+package com.heneng.launcher.view.base;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
 import android.view.WindowManager;
 
-import com.blxt.quickactivity.AbstractFullActivityQ;
+import com.blxt.quickactivity.QBaseActivity;
 import com.blxt.quickactivity.QPermissionActivity;
 
-public abstract class BaseActivity extends QPermissionActivity {
+public abstract class BaseActivity extends QBaseActivity {
 
     protected Handler handler = new Handler(){
         @Override

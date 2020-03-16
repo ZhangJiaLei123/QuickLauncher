@@ -1,4 +1,4 @@
-package com.heneng.launcher.ui.activity;
+package com.heneng.launcher.view.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,9 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.heneng.launcher.R;
-import com.heneng.launcher.ui.activity.application.BaseActivity;
-import com.heneng.launcher.ui.adapter.AppUninstallAdapter;
-import com.heneng.launcher.bean.AppInfoBean;
+import com.heneng.launcher.view.base.BaseActivity;
+import com.heneng.launcher.view.adapter.AppUninstallAdapter;
+import com.heneng.launcher.model.bean.AppInfoBean;
 import com.heneng.launcher.model.AppDataManage;
 import com.heneng.launcher.util.Tools;
 

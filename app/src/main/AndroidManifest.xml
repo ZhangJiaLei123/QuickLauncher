@@ -84,14 +84,14 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
-        android:name=".ui.activity.application.AppApplication"
+        android:name=".view.base.AppApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
@@ -99,11 +99,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.AppUninstallActivity" />
+        <activity android:name=".view.activity.AppUninstallActivity" />
         <activity
-            android:name=".ui.activity.MediaDetailsActivity"
+            android:name=".view.activity.MediaDetailsActivity"
             android:exported="true" />
-        <activity android:name=".ui.activity.VideoActivity" />
+        <activity android:name=".view.activity.VideoActivity" />
 
 
         <activity android:name="com.blxt.safety.activity.RublishcleanActivity"></activity>

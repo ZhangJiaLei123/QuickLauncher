@@ -1,4 +1,4 @@
-package com.heneng.launcher.ui.viewholder.activityview;
+package com.heneng.launcher.view.viewholder.activityview;
 
 import android.view.View;
 

@@ -1,4 +1,4 @@
-package com.heneng.launcher.ui.adapter;
+package com.heneng.launcher.view.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.heneng.launcher.R;
-import com.heneng.launcher.bean.AppInfoBean;
+import com.heneng.launcher.model.bean.AppInfoBean;
 
 import java.util.List;
 

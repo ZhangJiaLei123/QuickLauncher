@@ -8,8 +8,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 
-import com.heneng.launcher.ui.activity.application.AppApplication;
-import com.heneng.launcher.bean.AppInfoBean;
+import com.heneng.launcher.view.base.AppApplication;
+import com.heneng.launcher.model.bean.AppInfoBean;
 
 import java.util.ArrayList;
 import java.util.Iterator;

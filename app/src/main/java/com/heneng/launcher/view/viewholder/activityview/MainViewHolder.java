@@ -1,7 +1,6 @@
-package com.heneng.launcher.ui.viewholder.activityview;
+package com.heneng.launcher.view.viewholder.activityview;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.leanback.app.BackgroundManager;
 import androidx.leanback.app.BrowseFragment;
@@ -33,8 +31,8 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.android.material.navigation.NavigationView;
 import com.heneng.launcher.R;
-import com.heneng.launcher.bean.AppInfoBean;
-import com.heneng.launcher.bean.PhtotBean;
+import com.heneng.launcher.model.bean.AppInfoBean;
+import com.heneng.launcher.model.bean.PhtotBean;
 import com.heneng.launcher.model.AppDataManage;
 import com.heneng.launcher.model.FunctionModel;
 import com.heneng.launcher.model.MConstant;
@@ -44,7 +42,6 @@ import com.heneng.launcher.presenter.FunctionCardPresenter;
 import com.heneng.launcher.presenter.ImgCardPresenter;
 import com.heneng.launcher.presenter.PhotoPresenter;
 import com.blxt.safety.activity.RublishcleanActivity;
-import com.heneng.launcher.ui.activity.application.AppApplication;
 import com.heneng.launcher.util.ImageTools;
 import com.heneng.quicknoti.TipToast;
 

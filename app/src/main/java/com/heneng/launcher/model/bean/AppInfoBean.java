@@ -1,5 +1,5 @@
 
-package com.heneng.launcher.bean;
+package com.heneng.launcher.model.bean;
 
 import android.graphics.drawable.Drawable;
 

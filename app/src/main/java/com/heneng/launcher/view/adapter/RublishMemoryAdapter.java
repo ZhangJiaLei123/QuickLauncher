@@ -1,4 +1,4 @@
-package com.heneng.launcher.ui.adapter;
+package com.heneng.launcher.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;

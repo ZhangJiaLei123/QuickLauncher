@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/browse_fragment"
-        android:name="com.heneng.launcher.ui.fragment.MediaDetailsFragment"
+        android:name="com.heneng.launcher.view.fragment.MediaDetailsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>
