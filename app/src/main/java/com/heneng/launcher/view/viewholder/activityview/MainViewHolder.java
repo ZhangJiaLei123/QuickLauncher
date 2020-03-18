@@ -43,7 +43,7 @@ import com.heneng.launcher.presenter.ImgCardPresenter;
 import com.heneng.launcher.presenter.PhotoPresenter;
 import com.blxt.safety.activity.RublishcleanActivity;
 import com.heneng.launcher.util.ImageTools;
-import com.heneng.quicknoti.TipToast;
+import com.blxt.quicknoti.TipToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +53,7 @@ import static com.heneng.launcher.model.MConstant.MSGID_SLAVE_PORT_UP;
 
 public class MainViewHolder extends AbstractViewHolder {
     private Activity activity = null;
-    TipToast tipToast = TipToast.getInstance();
+    TipToast tipToast = null;
 
     protected BrowseFragment mBrowseFragment;
     private ArrayObjectAdapter rowsAdapter;
@@ -67,7 +67,7 @@ public class MainViewHolder extends AbstractViewHolder {
     public MainViewHolder(@NonNull View view, Activity activity) {
         super(view);
         this.activity = activity;
-
+        tipToast = TipToast.newInstance(getContext(), null);
         mBrowseFragment = (BrowseFragment) activity.getFragmentManager().findFragmentById(R.id.browse_fragment);
         mBrowseFragment.setHeadersState(BrowseFragment.HEADERS_DISABLED);
         //  mBrowseFragment.setTitle(getString(R.string.app_name));

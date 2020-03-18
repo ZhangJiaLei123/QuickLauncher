@@ -6,9 +6,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
+import com.blxt.qfile.QFile;
 import com.blxt.quicklog.QLog;
 import com.heneng.launcher.R;
-import com.heneng.quickfile.QFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

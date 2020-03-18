@@ -4,7 +4,7 @@ import com.blxt.quickactivity.AbstractApplication;
 import com.blxt.quickactivity.QAppConfig;
 import com.blxt.quicklog.QLog;
 import com.heneng.launcher.util.ImageTools;
-import com.heneng.quicknoti.TipToast;
+import com.blxt.quicknoti.TipToast;
 
 public class AppApplication extends AbstractApplication {
     static AppApplication instance = null;

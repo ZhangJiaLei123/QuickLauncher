@@ -22,6 +22,9 @@ allprojects {
         google()
         mavenCentral()
         jcenter()
+        maven {
+            url 'http://zhangjialei.cn:8083/repository/maven-releases/'
+        }
     }
 }
 
